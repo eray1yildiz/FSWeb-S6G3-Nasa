@@ -3,6 +3,16 @@ import "./App.css";
 import axios from "axios";
 import Image from "./components/image";
 import Youtube from "./components/youtube";
+import {
+  Back,
+  Header,
+  Title,
+  Explanation,
+  Date,
+  ImgDiv,
+} from "./components/content";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { Row, Col } from "reactstrap";
 
 /*const dummyData = {
   date: "2023-05-31",
@@ -38,17 +48,30 @@ function App() {
 
   return (
     <div className="App">
-      <input type="date" value={date} onChange={changeHandler} />
-      {data ? setData : <p>Loading</p>}
-      <h1>{data.title}</h1>
-      {data.media_type === "image" ? (
-        <Image dataUrl={data.url} />
-      ) : (
-        <Youtube dataUrl={data.url} />
-      )}
+      <Back>
+        <Row>
+          <Col>
+            <Header>NASA</Header>
 
-      <p className="date">{data.date}</p>
-      <p className="explanation">{data.explanation}</p>
+            <input type="date" value={date} onChange={changeHandler} />
+
+            <Title>{data.title}</Title>
+            <Date>{data.date}</Date>
+            <Explanation>{data.explanation}</Explanation>
+          </Col>
+
+          <Col>
+            {data ? setData : <p>Yükleniyor</p>}
+            <ImgDiv>
+              {data.media_type === "image" ? (
+                <Image dataUrl={data.url} />
+              ) : (
+                <Youtube dataUrl={data.url} />
+              )}
+            </ImgDiv>
+          </Col>
+        </Row>
+      </Back>
     </div>
   );
 }

@@ -4,7 +4,7 @@ const Image = props => {
   const { dataUrl } = props;
   return (
     <div>
-      <img src={dataUrl} />
+      <img src={dataUrl} alt="img" />
     </div>
   );
 };
